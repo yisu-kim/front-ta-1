@@ -1,7 +1,6 @@
-/* eslint-disable react/prop-types */
-
 import React from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const ItemBox = styled.li`
   padding: 20px;
@@ -57,3 +56,7 @@ function CommentItem({ comment }) {
 }
 
 export default CommentItem;
+
+CommentItem.propTypes = {
+  comment: PropTypes.object,
+};

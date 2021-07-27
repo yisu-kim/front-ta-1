@@ -1,8 +1,8 @@
-/* eslint-disable react/prop-types */
-
 import React, { useEffect, useRef, useState } from "react";
 import InfiniteScrollList from "./components/infiniteScrollList";
 import styled from "styled-components";
+import PropTypes from "prop-types";
+import HayanMind from "./service/hayanmind";
 
 const Container = styled.div`
   display: flex;
@@ -47,3 +47,7 @@ function App({ hayanmind }) {
 }
 
 export default App;
+
+App.propTypes = {
+  hayanmind: PropTypes.instanceOf(HayanMind),
+};

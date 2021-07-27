@@ -1,8 +1,7 @@
-/* eslint-disable react/prop-types */
-
 import React from "react";
 import CommentItem from "../commentItem/commentItem";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const List = styled.ul`
   list-style-type: none;
@@ -27,3 +26,7 @@ const InfiniteScrollList = ({ comments }) => {
 };
 
 export default InfiniteScrollList;
+
+InfiniteScrollList.propTypes = {
+  comments: PropTypes.array,
+};
