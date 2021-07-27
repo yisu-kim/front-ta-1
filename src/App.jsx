@@ -1,8 +1,7 @@
 /* eslint-disable react/prop-types */
 
 import React, { useEffect, useState } from "react";
-
-import InfiniteScrollList from "./components/InfiniteScrollList";
+import InfiniteScrollList from "./components/infiniteScrollList";
 
 const styles = {
   container: {
