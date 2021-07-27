@@ -1,19 +1,6 @@
 import React, { useEffect, useRef } from "react";
-// import CommentItem from "../commentItem/commentItem";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-
-const List = styled.ul`
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  width: 500px;
-  margin-top: 33px;
-`;
-
-const ListEnd = styled.li`
-  height: 300px;
-`;
 
 /*
  * Please modify this component to complete assignment.
@@ -54,3 +41,15 @@ InfiniteScrollList.propTypes = {
     PropTypes.element,
   ]),
 };
+
+const List = styled.ul`
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 500px;
+  margin-top: 33px;
+`;
+
+const ListEnd = styled.li`
+  height: 300px;
+`;

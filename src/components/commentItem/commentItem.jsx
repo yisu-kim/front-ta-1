@@ -2,6 +2,31 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
+function CommentItem({ comment }) {
+  const { id, email, body } = comment;
+
+  return (
+    <ItemBox>
+      <ItemRow>
+        <Title>Comment Id</Title> <InlineContent>{id}</InlineContent>
+      </ItemRow>
+      <ItemRow>
+        <Title>Email</Title> <InlineContent>{email}</InlineContent>
+      </ItemRow>
+      <ItemRow>
+        <Title>Comment</Title>
+        <BoxContent>{body}</BoxContent>
+      </ItemRow>
+    </ItemBox>
+  );
+}
+
+export default CommentItem;
+
+CommentItem.propTypes = {
+  comment: PropTypes.object,
+};
+
 const ItemBox = styled.li`
   padding: 20px;
   background: #f8f9fa;
@@ -35,28 +60,3 @@ const BoxContent = styled.p`
   margin: 0;
   margin-top: 2px;
 `;
-
-function CommentItem({ comment }) {
-  const { id, email, body } = comment;
-
-  return (
-    <ItemBox>
-      <ItemRow>
-        <Title>Comment Id</Title> <InlineContent>{id}</InlineContent>
-      </ItemRow>
-      <ItemRow>
-        <Title>Email</Title> <InlineContent>{email}</InlineContent>
-      </ItemRow>
-      <ItemRow>
-        <Title>Comment</Title>
-        <BoxContent>{body}</BoxContent>
-      </ItemRow>
-    </ItemBox>
-  );
-}
-
-export default CommentItem;
-
-CommentItem.propTypes = {
-  comment: PropTypes.object,
-};

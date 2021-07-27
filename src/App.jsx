@@ -6,13 +6,6 @@ import HayanMind from "./service/hayanmind";
 import { useCallback } from "react/cjs/react.development";
 import CommentItem from "./components/commentItem/commentItem";
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
-
 function App({ hayanmind }) {
   const [page, setPage] = useState(1);
   const [comments, setComments] = useState([]);
@@ -45,3 +38,10 @@ export default App;
 App.propTypes = {
   hayanmind: PropTypes.instanceOf(HayanMind),
 };
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
