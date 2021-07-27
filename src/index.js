@@ -3,10 +3,18 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import axios from "axios";
+import HayanMind from "./service/hayanmind";
+
+const httpClient = axios.create({
+  baseURL: "https://jsonplaceholder.typicode.com/",
+});
+
+const hayanmind = new HayanMind(httpClient);
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App hayanmind={hayanmind} />
   </React.StrictMode>,
   document.getElementById("root")
 );
