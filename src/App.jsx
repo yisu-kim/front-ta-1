@@ -2,15 +2,14 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import InfiniteScrollList from "./components/infiniteScrollList";
+import styled from "styled-components";
 
-const styles = {
-  container: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-};
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
 
 function App({ hayanmind }) {
   const [page, setPage] = useState(1);
@@ -40,10 +39,10 @@ function App({ hayanmind }) {
   }, [loading]);
 
   return (
-    <div style={styles.container}>
+    <Container>
       <InfiniteScrollList comments={comments} />
       <div ref={pageEnd}></div>
-    </div>
+    </Container>
   );
 }
 

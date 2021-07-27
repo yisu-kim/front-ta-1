@@ -2,6 +2,15 @@
 
 import React from "react";
 import CommentItem from "../commentItem/commentItem";
+import styled from "styled-components";
+
+const List = styled.ul`
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 500px;
+  margin-top: 33px;
+`;
 
 /*
  * Please modify this component to complete assignment.
@@ -9,11 +18,11 @@ import CommentItem from "../commentItem/commentItem";
  */
 const InfiniteScrollList = ({ comments }) => {
   return (
-    <ul>
+    <List>
       {comments.map((comment) => (
         <CommentItem key={comment.id} comment={comment} />
       ))}
-    </ul>
+    </List>
   );
 };
 
