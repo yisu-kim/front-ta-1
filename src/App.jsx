@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import InfiniteScrollList from "./components/infiniteScrollList";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import HayanMind from "./service/hayanmind";
-import { useCallback } from "react/cjs/react.development";
 import CommentItem from "./components/commentItem/commentItem";
 
 function App({ hayanmind }) {
