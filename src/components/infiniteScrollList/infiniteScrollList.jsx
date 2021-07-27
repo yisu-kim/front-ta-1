@@ -1,5 +1,5 @@
-import React from "react";
-import CommentItem from "../commentItem/commentItem";
+import React, { useEffect, useRef } from "react";
+// import CommentItem from "../commentItem/commentItem";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
@@ -11,16 +11,35 @@ const List = styled.ul`
   margin-top: 33px;
 `;
 
+const ListEnd = styled.li`
+  height: 300px;
+`;
+
 /*
  * Please modify this component to complete assignment.
  * You can modify all the files in that package if you need.
  */
-const InfiniteScrollList = ({ comments }) => {
+const InfiniteScrollList = ({ hasMore, loadMore, children }) => {
+  const endRef = useRef();
+
+  useEffect(() => {
+    if (hasMore) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (entries[0].isIntersecting) {
+            loadMore();
+          }
+        },
+        { threshold: 0 }
+      );
+      observer.observe(endRef.current);
+    }
+  }, [hasMore, loadMore]);
+
   return (
     <List>
-      {comments.map((comment) => (
-        <CommentItem key={comment.id} comment={comment} />
-      ))}
+      {children}
+      <ListEnd ref={endRef}></ListEnd>
     </List>
   );
 };
@@ -28,5 +47,10 @@ const InfiniteScrollList = ({ comments }) => {
 export default InfiniteScrollList;
 
 InfiniteScrollList.propTypes = {
-  comments: PropTypes.array,
+  hasMore: PropTypes.bool,
+  loadMore: PropTypes.func,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.element),
+    PropTypes.element,
+  ]),
 };

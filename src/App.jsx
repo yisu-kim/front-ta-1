@@ -1,8 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import InfiniteScrollList from "./components/infiniteScrollList";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import HayanMind from "./service/hayanmind";
+import { useCallback } from "react/cjs/react.development";
+import CommentItem from "./components/commentItem/commentItem";
 
 const Container = styled.div`
   display: flex;
@@ -14,34 +16,26 @@ const Container = styled.div`
 function App({ hayanmind }) {
   const [page, setPage] = useState(1);
   const [comments, setComments] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const pageEnd = useRef();
+  const [hasMore, setHasMore] = useState(false);
 
   useEffect(() => {
     hayanmind.comments(page).then((comments) => {
       setComments((prev) => [...prev, ...comments]);
-      setLoading(true);
+      setHasMore(true);
     });
   }, [hayanmind, page]);
 
-  useEffect(() => {
-    if (loading) {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          if (entries[0].isIntersecting) {
-            setPage((page) => page + 1);
-          }
-        },
-        { threshold: 1 }
-      );
-      observer.observe(pageEnd.current);
-    }
-  }, [loading]);
+  const loadMore = useCallback(() => {
+    setPage((page) => page + 1);
+  }, []);
 
   return (
     <Container>
-      <InfiniteScrollList comments={comments} />
-      <div ref={pageEnd}></div>
+      <InfiniteScrollList hasMore={hasMore} loadMore={loadMore}>
+        {comments.map((comment) => (
+          <CommentItem key={comment.id} comment={comment} />
+        ))}
+      </InfiniteScrollList>
     </Container>
   );
 }
