@@ -11,11 +11,14 @@ const InfiniteScrollList = ({ hasMore, loadMore, children }) => {
 
   useEffect(() => {
     if (hasMore) {
-      const observer = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting) {
-          loadMore();
-        }
-      });
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (entries[0].isIntersecting) {
+            loadMore();
+          }
+        },
+        { rootMargin: "0px 0px 400px" }
+      );
       observer.observe(endRef.current);
     }
   }, [hasMore, loadMore]);
@@ -23,7 +26,7 @@ const InfiniteScrollList = ({ hasMore, loadMore, children }) => {
   return (
     <List>
       {children}
-      <ListEnd ref={endRef}></ListEnd>
+      <li ref={endRef}></li>
     </List>
   );
 };
@@ -45,8 +48,4 @@ const List = styled.ul`
   padding: 0;
   width: 500px;
   margin-top: 33px;
-`;
-
-const ListEnd = styled.li`
-  height: 300px;
 `;
