@@ -11,14 +11,11 @@ const InfiniteScrollList = ({ hasMore, loadMore, children }) => {
 
   useEffect(() => {
     if (hasMore) {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          if (entries[0].isIntersecting) {
-            loadMore();
-          }
-        },
-        { threshold: 0 }
-      );
+      const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          loadMore();
+        }
+      });
       observer.observe(endRef.current);
     }
   }, [hasMore, loadMore]);
