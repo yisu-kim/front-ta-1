@@ -10,17 +10,23 @@ const InfiniteScrollList = ({ hasMore, loadMore, children }) => {
   const endRef = useRef();
 
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          loadMore();
+        }
+      },
+      { rootMargin: "0px 0px 400px" }
+    );
+    const target = endRef.current;
+
     if (hasMore) {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          if (entries[0].isIntersecting) {
-            loadMore();
-          }
-        },
-        { rootMargin: "0px 0px 400px" }
-      );
-      observer.observe(endRef.current);
+      observer.observe(target);
     }
+
+    return function cleanup() {
+      observer.unobserve(target);
+    };
   }, [hasMore, loadMore]);
 
   return (

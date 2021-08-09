@@ -13,7 +13,11 @@ function App({ hayanmind }) {
   useEffect(() => {
     hayanmind.comments(page).then((comments) => {
       setComments((prev) => [...prev, ...comments]);
-      setHasMore(true);
+      if (comments.length > 0) {
+        setHasMore(true);
+      } else {
+        setHasMore(false);
+      }
     });
   }, [hayanmind, page]);
 
