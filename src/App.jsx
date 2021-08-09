@@ -9,12 +9,16 @@ function App({ hayanmind }) {
   const [page, setPage] = useState(1);
   const [comments, setComments] = useState([]);
   const [hasMore, setHasMore] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     hayanmind.comments(page).then((comments) => {
       setComments((prev) => [...prev, ...comments]);
+      setIsLoading(false);
+
       if (comments.length > 0) {
         setHasMore(true);
+        setIsLoading(true);
       } else {
         setHasMore(false);
       }
@@ -27,7 +31,11 @@ function App({ hayanmind }) {
 
   return (
     <Container>
-      <InfiniteScrollList hasMore={hasMore} loadMore={loadMore}>
+      <InfiniteScrollList
+        hasMore={hasMore}
+        loadMore={loadMore}
+        isLoading={isLoading}
+      >
         {comments.map((comment) => (
           <CommentItem key={comment.id} comment={comment} />
         ))}

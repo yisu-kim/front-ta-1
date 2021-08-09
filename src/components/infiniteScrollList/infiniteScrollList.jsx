@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
  * Please modify this component to complete assignment.
  * You can modify all the files in that package if you need.
  */
-const InfiniteScrollList = ({ hasMore, loadMore, children }) => {
+const InfiniteScrollList = ({ hasMore, loadMore, isLoading, children }) => {
   const endRef = useRef();
 
   useEffect(() => {
@@ -32,7 +32,7 @@ const InfiniteScrollList = ({ hasMore, loadMore, children }) => {
   return (
     <List>
       {children}
-      <li ref={endRef}></li>
+      <li ref={endRef}>{isLoading && <p>Loading...</p>}</li>
     </List>
   );
 };
@@ -42,6 +42,7 @@ export default InfiniteScrollList;
 InfiniteScrollList.propTypes = {
   hasMore: PropTypes.bool,
   loadMore: PropTypes.func,
+  isLoading: PropTypes.bool,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.element),
     PropTypes.element,
