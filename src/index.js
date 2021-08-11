@@ -5,6 +5,7 @@ import App from "./App";
 import axios from "axios";
 import HayanMind from "./service/hayanmind";
 import { createGlobalStyle } from "styled-components";
+import { BASE_URL } from "./utils/constants";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -13,7 +14,7 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const httpClient = axios.create({
-  baseURL: "https://jsonplaceholder.typicode.com/",
+  baseURL: BASE_URL,
 });
 
 const hayanmind = new HayanMind(httpClient);

@@ -4,9 +4,10 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import HayanMind from "./service/hayanmind";
 import CommentItem from "./components/commentItem/commentItem";
+import { START_PAGE } from "./utils/constants";
 
 function App({ hayanmind }) {
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(START_PAGE);
   const [comments, setComments] = useState([]);
   const [hasMore, setHasMore] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
