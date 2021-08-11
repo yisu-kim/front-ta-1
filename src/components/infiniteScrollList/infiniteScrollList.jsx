@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
+import useIntersectionObserver from "../../hooks/useIntersectionObserver";
 
 /*
  * Please modify this component to complete assignment.
@@ -8,26 +9,15 @@ import PropTypes from "prop-types";
  */
 const InfiniteScrollList = ({ hasMore, loadMore, isLoading, children }) => {
   const endRef = useRef();
+  const io = useIntersectionObserver(endRef, {
+    rootMargin: "0px 0px 400px",
+  });
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          loadMore();
-        }
-      },
-      { rootMargin: "0px 0px 400px" }
-    );
-    const target = endRef.current;
-
-    if (hasMore) {
-      observer.observe(target);
+    if (io?.isIntersecting && hasMore) {
+      loadMore();
     }
-
-    return function cleanup() {
-      observer.unobserve(target);
-    };
-  }, [hasMore, loadMore]);
+  }, [io, hasMore, loadMore]);
 
   return (
     <List>
