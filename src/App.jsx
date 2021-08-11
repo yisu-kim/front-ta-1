@@ -1,10 +1,14 @@
 import React, { useCallback, useEffect, useState } from "react";
-import InfiniteScrollList from "components/infiniteScrollList";
-import styled from "styled-components";
 import PropTypes from "prop-types";
-import HayanMind from "service/hayanmind";
-import CommentItem from "components/commentItem/commentItem";
+import styled from "styled-components";
 import { START_PAGE } from "utils/constants";
+import HayanMind from "service/hayanmind";
+import InfiniteScrollList from "components/infiniteScrollList";
+import CommentItem from "components/commentItem/commentItem";
+
+App.propTypes = {
+  hayanmind: PropTypes.instanceOf(HayanMind),
+};
 
 function App({ hayanmind }) {
   const [page, setPage] = useState(START_PAGE);
@@ -46,10 +50,6 @@ function App({ hayanmind }) {
 }
 
 export default App;
-
-App.propTypes = {
-  hayanmind: PropTypes.instanceOf(HayanMind),
-};
 
 const Container = styled.div`
   display: flex;

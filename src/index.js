@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "index.css";
-import App from "App";
 import axios from "axios";
-import HayanMind from "service/hayanmind";
 import { BASE_URL } from "utils/constants";
+import HayanMind from "service/hayanmind";
+import App from "App";
+import "index.css";
 import { GlobalStyle } from "styles/globalStyle";
 
 const httpClient = axios.create({

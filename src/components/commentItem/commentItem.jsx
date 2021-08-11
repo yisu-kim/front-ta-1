@@ -1,6 +1,10 @@
 import React from "react";
-import styled from "styled-components";
 import PropTypes from "prop-types";
+import styled from "styled-components";
+
+CommentItem.propTypes = {
+  comment: PropTypes.object,
+};
 
 function CommentItem({ comment }) {
   const { id, email, body } = comment;
@@ -22,10 +26,6 @@ function CommentItem({ comment }) {
 }
 
 export default CommentItem;
-
-CommentItem.propTypes = {
-  comment: PropTypes.object,
-};
 
 const ItemBox = styled.li`
   padding: 20px;
