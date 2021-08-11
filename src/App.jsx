@@ -1,10 +1,10 @@
 import React, { useCallback, useEffect, useState } from "react";
-import InfiniteScrollList from "./components/infiniteScrollList";
+import InfiniteScrollList from "components/infiniteScrollList";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import HayanMind from "./service/hayanmind";
-import CommentItem from "./components/commentItem/commentItem";
-import { START_PAGE } from "./utils/constants";
+import HayanMind from "service/hayanmind";
+import CommentItem from "components/commentItem/commentItem";
+import { START_PAGE } from "utils/constants";
 
 function App({ hayanmind }) {
   const [page, setPage] = useState(START_PAGE);

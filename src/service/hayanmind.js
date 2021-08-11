@@ -1,4 +1,4 @@
-import { LIMIT } from "../utils/constants";
+import { LIMIT } from "utils/constants";
 
 class HayanMind {
   constructor(httpClient) {
