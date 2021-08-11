@@ -29,10 +29,10 @@ CommentItem.propTypes = {
 
 const ItemBox = styled.li`
   padding: 20px;
-  background: #f8f9fa;
-  border: 0.5px solid #ced4da;
-  border-radius: 20px;
   margin-bottom: 12px;
+  background: #f8f9fa;
+  border: 1px solid #ced4da;
+  border-radius: 20px;
   font-size: 18px;
   line-height: 21px;
   color: #212529;
@@ -41,10 +41,10 @@ const ItemBox = styled.li`
 const ItemRow = styled.div`
   margin: 12px 0;
   &:first-child {
-    margin: 0;
+    margin-top: 0;
   }
   &:last-child {
-    margin: 0;
+    margin-bottom: 0;
   }
 `;
 
@@ -57,6 +57,5 @@ const InlineContent = styled.span`
 `;
 
 const BoxContent = styled.p`
-  margin: 0;
   margin-top: 2px;
 `;
