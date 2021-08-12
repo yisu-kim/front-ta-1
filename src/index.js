@@ -4,7 +4,6 @@ import axios from "axios";
 import { BASE_URL } from "utils/constants";
 import HayanMind from "service/hayanmind";
 import App from "App";
-import "index.css";
 import { GlobalStyle } from "styles/globalStyle";
 
 const httpClient = axios.create({
