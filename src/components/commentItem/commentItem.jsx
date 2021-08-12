@@ -6,7 +6,7 @@ CommentItem.propTypes = {
   comment: PropTypes.object,
 };
 
-function CommentItem({ comment }) {
+export default function CommentItem({ comment }) {
   const { id, email, body } = comment;
 
   return (
@@ -24,8 +24,6 @@ function CommentItem({ comment }) {
     </ItemBox>
   );
 }
-
-export default CommentItem;
 
 const ItemBox = styled.li`
   padding: 20px;

@@ -10,7 +10,7 @@ App.propTypes = {
   hayanmind: PropTypes.instanceOf(HayanMind),
 };
 
-function App({ hayanmind }) {
+export default function App({ hayanmind }) {
   const [page, setPage] = useState(START_PAGE);
   const [comments, setComments] = useState([]);
   const [hasMore, setHasMore] = useState(false);
@@ -48,8 +48,6 @@ function App({ hayanmind }) {
     </Container>
   );
 }
-
-export default App;
 
 const Container = styled.div`
   display: flex;

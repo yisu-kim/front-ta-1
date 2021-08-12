@@ -13,7 +13,12 @@ InfiniteScrollList.propTypes = {
   ]),
 };
 
-const InfiniteScrollList = ({ hasMore, loadMore, isLoading, children }) => {
+export default function InfiniteScrollList({
+  hasMore,
+  loadMore,
+  isLoading,
+  children,
+}) {
   const endRef = useRef();
   const io = useIntersectionObserver(endRef, {
     rootMargin: "0px 0px 400px",
@@ -31,9 +36,7 @@ const InfiniteScrollList = ({ hasMore, loadMore, isLoading, children }) => {
       <li ref={endRef}>{isLoading && <p>Loading...</p>}</li>
     </List>
   );
-};
-
-export default InfiniteScrollList;
+}
 
 const List = styled.ul`
   list-style-type: none;
