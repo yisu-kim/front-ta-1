@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
 import useIntersectionObserver from "hooks/useIntersectionObserver";
+import style from "./infiniteScrollListStyle";
 
 InfiniteScrollList.propTypes = {
   hasMore: PropTypes.bool,
@@ -38,8 +38,4 @@ export default function InfiniteScrollList({
   );
 }
 
-const List = styled.ul`
-  list-style-type: none;
-  width: 500px;
-  margin-top: 33px;
-`;
+const { List } = style;

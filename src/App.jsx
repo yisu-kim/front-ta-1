@@ -1,10 +1,10 @@
 import React, { useCallback, useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
 import { START_PAGE } from "utils/constants";
 import HayanMind from "service/hayanmind";
 import InfiniteScrollList from "components/infiniteScrollList";
 import CommentItem from "components/commentItem/commentItem";
+import style from "./AppStyle";
 
 App.propTypes = {
   hayanmind: PropTypes.instanceOf(HayanMind),
@@ -49,7 +49,4 @@ export default function App({ hayanmind }) {
   );
 }
 
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-`;
+const { Container } = style;
