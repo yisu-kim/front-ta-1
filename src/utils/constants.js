@@ -1,3 +1,5 @@
-export const BASE_URL = "https://jsonplaceholder.typicode.com/";
-export const LIMIT = 10;
-export const START_PAGE = 1;
+export const API = {
+  baseURL: 'https://jsonplaceholder.typicode.com/',
+  limit: 10,
+  startPage: 1,
+};

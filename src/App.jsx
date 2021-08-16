@@ -1,17 +1,17 @@
-import React, { useCallback, useEffect, useState } from "react";
-import PropTypes from "prop-types";
-import { START_PAGE } from "utils/constants";
-import HayanMind from "service/hayanmind";
-import InfiniteScrollList from "components/infiniteScrollList";
-import CommentItem from "components/commentItem/commentItem";
-import style from "./AppStyle";
+import React, { useCallback, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import { API } from 'utils/constants';
+import HayanMind from 'service/hayanmind';
+import InfiniteScrollList from 'components/infiniteScrollList';
+import CommentItem from 'components/commentItem/commentItem';
+import style from './AppStyle';
 
 App.propTypes = {
   hayanmind: PropTypes.instanceOf(HayanMind),
 };
 
 export default function App({ hayanmind }) {
-  const [page, setPage] = useState(START_PAGE);
+  const [page, setPage] = useState(API.startPage);
   const [comments, setComments] = useState([]);
   const [hasMore, setHasMore] = useState(false);
   const [isLoading, setIsLoading] = useState(false);

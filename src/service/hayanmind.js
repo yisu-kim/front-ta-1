@@ -1,4 +1,4 @@
-import { LIMIT } from "utils/constants";
+import { API } from 'utils/constants';
 
 class HayanMind {
   constructor(httpClient) {
@@ -6,8 +6,8 @@ class HayanMind {
   }
 
   async comments(_page) {
-    const response = await this.hayanmind.get("comments", {
-      params: { _page, _limit: LIMIT },
+    const response = await this.hayanmind.get('comments', {
+      params: { _page, _limit: API.limit },
     });
     return response.data;
   }
