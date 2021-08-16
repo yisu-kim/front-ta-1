@@ -1,16 +1,17 @@
-import React from "react";
-import PropTypes from "prop-types";
-import style from "./commentItemStyle";
+import React from 'react';
+import PropTypes from 'prop-types';
+import style from './commentItemStyle';
 
 CommentItem.propTypes = {
+  mesureRef: PropTypes.func,
   comment: PropTypes.object,
 };
 
-export default function CommentItem({ comment }) {
+export default function CommentItem({ mesureRef, comment }) {
   const { id, email, body } = comment;
 
   return (
-    <ItemBox>
+    <ItemBox ref={mesureRef}>
       <ItemRow>
         <Title>Comment Id</Title> <InlineContent>{id}</InlineContent>
       </ItemRow>

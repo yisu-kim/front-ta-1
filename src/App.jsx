@@ -2,8 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { API } from 'utils/constants';
 import HayanMind from 'service/hayanmind';
-import InfiniteScrollList from 'components/infiniteScrollList';
-import CommentItem from 'components/commentItem/commentItem';
+import CommentList from 'components/commentList';
 import style from './AppStyle';
 
 App.propTypes = {
@@ -36,15 +35,14 @@ export default function App({ hayanmind }) {
 
   return (
     <Container>
-      <InfiniteScrollList
-        hasMore={hasMore}
-        loadMore={loadMore}
-        isLoading={isLoading}
-      >
-        {comments.map((comment) => (
-          <CommentItem key={comment.id} comment={comment} />
-        ))}
-      </InfiniteScrollList>
+      {comments.length > 0 && (
+        <CommentList
+          hasMore={hasMore}
+          loadMore={loadMore}
+          isLoading={isLoading}
+          comments={comments}
+        />
+      )}
     </Container>
   );
 }

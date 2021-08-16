@@ -1,3 +1,3 @@
-import CommentItem from "./commentItem";
+import CommentItem from './commentItem';
 
 export default CommentItem;
