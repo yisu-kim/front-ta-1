@@ -16,21 +16,17 @@ export default function App({ hayanmind }) {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    hayanmind.comments(page).then((comments) => {
-      setComments((prev) => [...prev, ...comments]);
+    (async () => {
+      const { data: newComments } = await hayanmind.comments(page);
+      setComments((prevComments) => [...prevComments, ...newComments]);
+      setHasMore(newComments.length > 0);
       setIsLoading(false);
-
-      if (comments.length > 0) {
-        setHasMore(true);
-        setIsLoading(true);
-      } else {
-        setHasMore(false);
-      }
-    });
+    })();
   }, [hayanmind, page]);
 
   const loadMore = useCallback(() => {
     setPage((page) => page + 1);
+    setIsLoading(true);
   }, []);
 
   return (

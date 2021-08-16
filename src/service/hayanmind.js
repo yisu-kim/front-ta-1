@@ -9,7 +9,7 @@ class HayanMind {
     const response = await this.hayanmind.get('comments', {
       params: { _page, _limit: API.limit },
     });
-    return response.data;
+    return response;
   }
 }
 
