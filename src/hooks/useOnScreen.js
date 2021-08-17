@@ -10,14 +10,14 @@ const useOnScreen = ({
 
   const measureRef = useCallback(
     (node) => {
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          setIntersecting(entry.isIntersecting);
-        },
-        { root, rootMargin, threshold }
-      );
-
       if (node) {
+        const observer = new IntersectionObserver(
+          ([entry]) => {
+            setIntersecting(entry.isIntersecting);
+          },
+          { root, rootMargin, threshold }
+        );
+
         observer.observe(node);
         setOserver(observer);
       }
