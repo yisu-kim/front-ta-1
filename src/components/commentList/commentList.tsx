@@ -1,28 +1,28 @@
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
 import useOnScreen from 'hooks/useOnScreen';
+import { CommentResponse } from 'services/comment';
 import CommentItem from 'components/commentItem';
 import style from './commentListStyle';
 
-CommentList.propTypes = {
-  hasMore: PropTypes.bool,
-  loadMore: PropTypes.func,
-  isLoading: PropTypes.bool,
-  comments: PropTypes.array,
-};
+interface CommentListProps {
+  hasMore: boolean;
+  loadMore: () => void;
+  isLoading: boolean;
+  comments: CommentResponse[];
+}
 
-export default function CommentList({
+const CommentList: React.FC<CommentListProps> = ({
   hasMore,
   loadMore,
   isLoading,
   comments,
-}) {
+}) => {
   const { measureRef, isIntersecting, observer } = useOnScreen();
 
   useEffect(() => {
     if (isIntersecting && hasMore) {
       loadMore();
-      observer.disconnect();
+      observer!.disconnect();
     }
   }, [isIntersecting, hasMore, loadMore]);
 
@@ -43,6 +43,8 @@ export default function CommentList({
       {isLoading && <li>Loading...</li>}
     </List>
   );
-}
+};
+
+export default CommentList;
 
 const { List } = style;

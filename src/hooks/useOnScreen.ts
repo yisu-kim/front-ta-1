@@ -5,11 +5,11 @@ const useOnScreen = ({
   rootMargin = '0px',
   threshold = 0,
 } = {}) => {
-  const [observer, setOserver] = useState();
+  const [observer, setObserver] = useState<IntersectionObserver>();
   const [isIntersecting, setIntersecting] = useState(false);
 
   const measureRef = useCallback(
-    (node) => {
+    (node: Element) => {
       if (node) {
         const observer = new IntersectionObserver(
           ([entry]) => {
@@ -19,7 +19,7 @@ const useOnScreen = ({
         );
 
         observer.observe(node);
-        setOserver(observer);
+        setObserver(observer);
       }
     },
     [root, rootMargin, threshold]
