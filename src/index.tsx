@@ -1,21 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import axios from 'axios';
+import axios, { AxiosInstance } from 'axios';
 import { API } from 'utils/constants';
-import HayanMind from 'service/hayanmind';
-import App from 'App';
+import CommentService from 'services/comment';
 import { GlobalStyle } from 'styles/globalStyle';
+import App from 'App';
 
-const httpClient = axios.create({
+const httpClient: AxiosInstance = axios.create({
   baseURL: API.baseURL,
 });
 
-const hayanmind = new HayanMind(httpClient);
+const commentService = new CommentService(httpClient);
 
 ReactDOM.render(
   <React.StrictMode>
     <GlobalStyle />
-    <App hayanmind={hayanmind} />
+    <App commentService={commentService} />
   </React.StrictMode>,
   document.getElementById('root')
 );

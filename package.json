@@ -1,5 +1,5 @@
 {
-  "name": "front-ta-1",
+  "name": "pre-onboarding-hayanmind",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -39,7 +39,12 @@
     ]
   },
   "devDependencies": {
+    "@types/react": "^17.0.21",
+    "@types/react-dom": "^17.0.9",
+    "@types/styled-components": "^5.1.14",
+    "@typescript-eslint/eslint-plugin": "^4.31.1",
+    "@typescript-eslint/parser": "^4.31.1",
     "eslint": "^7.31.0",
-    "eslint-plugin-react": "^7.24.0"
+    "eslint-plugin-react": "^7.25.1"
   }
 }
