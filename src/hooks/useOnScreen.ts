@@ -9,7 +9,7 @@ const useOnScreen = ({
   const [isIntersecting, setIntersecting] = useState(false);
 
   const measureRef = useCallback(
-    (node: Element) => {
+    (node: HTMLElement | null) => {
       if (node) {
         const observer = new IntersectionObserver(
           ([entry]) => {

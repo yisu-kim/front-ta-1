@@ -1,13 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { CommentResponse } from 'services/comment';
 import style from './commentItemStyle';
 
-CommentItem.propTypes = {
-  mesureRef: PropTypes.func,
-  comment: PropTypes.object,
-};
+interface CommentItemProps {
+  mesureRef?: (node: HTMLElement | null) => void;
+  comment: CommentResponse;
+}
 
-export default function CommentItem({ mesureRef, comment }) {
+const CommentItem: React.FC<CommentItemProps> = ({ mesureRef, comment }) => {
   const { id, email, body } = comment;
 
   return (
@@ -24,6 +24,8 @@ export default function CommentItem({ mesureRef, comment }) {
       </ItemRow>
     </ItemBox>
   );
-}
+};
+
+export default CommentItem;
 
 const { ItemBox, ItemRow, Title, InlineContent, BoxContent } = style;
