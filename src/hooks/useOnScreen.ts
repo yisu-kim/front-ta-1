@@ -1,10 +1,10 @@
 import { useCallback, useState } from 'react';
 
-const useOnScreen = ({
-  root = null,
-  rootMargin = '0px',
-  threshold = 0,
-} = {}) => {
+const useOnScreen = ({ root = null, rootMargin = '0px', threshold = 0 } = {}): {
+  measureRef: (node: HTMLElement | null) => void;
+  isIntersecting: boolean;
+  observer: IntersectionObserver | undefined;
+} => {
   const [observer, setObserver] = useState<IntersectionObserver>();
   const [isIntersecting, setIntersecting] = useState(false);
 
